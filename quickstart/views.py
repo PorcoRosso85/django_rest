@@ -3,6 +3,8 @@ from rest_framework import permissions, viewsets
 
 from quickstart.serializers import GroupSerializer, UserSerializer
 
+from django.http import HttpResponse
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -22,3 +24,13 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+def index_view(request):
+    return HttpResponse("Hello, Django.")
+
+
+def test_index_view(rf):
+    request = rf.get("/")
+    response = index_view(request)
+    assert response.content == b"Hello, Django."
