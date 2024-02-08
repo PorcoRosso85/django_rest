@@ -1,0 +1,3 @@
+__pycache__/manage.cpython-310-pytest-8.0.0.pyc
+*.sqlite3
+*.lock
